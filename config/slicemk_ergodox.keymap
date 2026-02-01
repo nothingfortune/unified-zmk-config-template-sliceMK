@@ -7,6 +7,8 @@
 
 /* Increase mouse cursor speed 3x (default is 600) */
 #define ZMK_MOUSE_DEFAULT_MOVE_VAL 1800
+/* Double scroll wheel speed (default is 10) */
+#define ZMK_MOUSE_DEFAULT_SCRL_VAL 20
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
