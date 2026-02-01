@@ -84,4 +84,10 @@ include:
 2. Add to `build.yaml`
 
 ## External Dependencies
-- ZMK: `https://github.com/zmkfirmware/zmk` @ `v0.3` (in `config/west.yml`)
+- ZMK: `https://github.com/slicemk/zmk` @ `main` (in `config/west.yml`)
+
+## Important: sliceMK Fork Differences
+The sliceMK ZMK fork differs from upstream ZMK:
+- **Use `<dt-bindings/zmk/mouse.h>`** NOT `pointing.h` for mouse behaviors
+- **Do NOT use** `ZMK_POINTING_DEFAULT_MOVE_VAL` define (not supported)
+- **Do NOT include** `<dt-bindings/zmk/rgb.h>` unless RGB is configured
