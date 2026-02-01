@@ -1,0 +1,87 @@
+# Copilot Instructions for ZMK Config Repository
+
+## Project Overview
+This is a ZMK firmware configuration repository for the [sliceMK ErgoDox Wireless Lite](https://www.slicemk.com/products/ergodox-wireless-lite). It uses [ZMK Firmware](https://zmk.dev) on Zephyr RTOS. Keymaps are created via the **sliceMK Web UI** and exported as JSON.
+
+## Workflow
+1. **Configure keymap** in [sliceMK web configurator](https://www.slicemk.com) → export JSON
+2. **Push changes** to this repo → GitHub Actions builds firmware automatically
+3. **Download artifacts** from the Actions run (`.uf2` firmware files)
+
+No local toolchain required.
+
+## Architecture
+
+| Directory | Purpose |
+|-----------|---------|
+| `boards/shields/` | Custom shield definitions (overlay, keymap, Kconfig) |
+| `config/west.yml` | West manifest, pins ZMK to `v0.3` |
+| `build.yaml` | Build matrix for GitHub Actions |
+| `zephyr/module.yml` | Declares repo as Zephyr module |
+
+## Current Hardware
+- **Board**: `raytac_mdbt50q_rx_green` (USB dongle receiver)
+- **Shield**: `slicemk_ergodox_dongle`
+- **Peripheral ID**: `40100`
+- **Pairing**: Dongle-only (keyboard halves pair to dongle, not Bluetooth host)
+
+## Adding Another Keyboard
+1. Export JSON from sliceMK web UI (or create shield manually)
+2. Add entry to `build.yaml`:
+   ```yaml
+   include:
+     - board: <board_name>
+       shield: <shield_name>
+   ```
+3. If custom shield needed, add to `boards/shields/<name>/`
+
+## Keymap JSON Format (from sliceMK Web UI)
+```json
+{
+  "Keyboard": "ergodox",
+  "Board": "raytac_mdbt50q_rx_green",
+  "Shield": "slicemk_ergodox_dongle",
+  "Layers": [
+    {
+      "Name": "base",
+      "Keys": [
+        { "Behavior": "&kp", "Args": ["A"] },
+        { "Behavior": "&mo", "Args": ["fn"] },
+        { "Behavior": "&lt", "Args": ["pwr", "BACKSPACE"] },
+        { "Behavior": "$custom", "Args": ["&gresc"] }
+      ]
+    }
+  ],
+  "Advanced": { "MouseMove": "1200", "BTParams": "6/399/900" }
+}
+```
+
+### Key Behaviors
+| Behavior | Usage | Example |
+|----------|-------|---------|
+| `&kp` | Key press | `["A"]`, `["LEFT_SHIFT"]` |
+| `&mo` | Momentary layer | `["fn"]` |
+| `&lt` | Layer-tap | `["layer", "KEY"]` |
+| `&mt` | Mod-tap | `["LCTRL", "A"]` |
+| `&trans` | Transparent | `[]` |
+| `&none` | No action | `[]` |
+| `$custom` | Raw behavior | `["&gresc"]` |
+
+## Build Matrix (`build.yaml`)
+```yaml
+include:
+  - board: raytac_mdbt50q_rx_green
+    shield: slicemk_ergodox_dongle
+    cmake-args: -DCONFIG_ZMK_STUDIO=y  # optional
+    snippet: studio-rpc-usb-uart        # optional
+```
+
+## Adding a New Shield
+1. Create `boards/shields/<name>/` with:
+   - `<name>.overlay` - GPIO/matrix definition
+   - `<name>.keymap` - Default keymap
+   - `Kconfig.shield` + `Kconfig.defconfig`
+2. Add to `build.yaml`
+
+## External Dependencies
+- ZMK: `https://github.com/zmkfirmware/zmk` @ `v0.3` (in `config/west.yml`)
