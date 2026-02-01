@@ -90,4 +90,5 @@ include:
 The sliceMK ZMK fork differs from upstream ZMK:
 - **Use `<dt-bindings/zmk/mouse.h>`** NOT `pointing.h` for mouse behaviors
 - **Do NOT use** `ZMK_POINTING_DEFAULT_MOVE_VAL` define (not supported)
+- **Do NOT use** `CONFIG_ZMK_MOUSE_DEFAULT_MOVE_VAL` Kconfig option (not supported)
 - **Do NOT include** `<dt-bindings/zmk/rgb.h>` unless RGB is configured
