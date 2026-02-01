@@ -5,6 +5,9 @@
 #define LAYER_NMPAD 4
 #define LAYER_FN 5
 
+/* Increase mouse cursor speed 3x (default is 600) */
+#define ZMK_MOUSE_DEFAULT_MOVE_VAL 1800
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
@@ -25,9 +28,18 @@
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
 			flavor = "tap-preferred";
+			tapping-term-ms = <280>;
+			quick-tap-ms = <175>;
+			require-prior-idle-ms = <200>;
+			bindings = <&kp>, <&kp>;
+		};
+		/* Hold backspace = delete word (Option+Backspace on macOS) */
+		bspc_word: backspace_word {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "balanced";
 			tapping-term-ms = <200>;
 			quick-tap-ms = <150>;
-			require-prior-idle-ms = <150>;
 			bindings = <&kp>, <&kp>;
 		};
 		td_shift_caps: tap_dance_shift_caps {
@@ -59,13 +71,13 @@
 		layer_0 {
 			bindings = <
 				&none
-				&gresc           &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4        &kp NUMBER_5         &mo LAYER_FN             &mo LAYER_FN      &kp NUMBER_6             &kp NUMBER_7   &kp NUMBER_8 &kp NUMBER_9   &kp NUMBER_0    &lt_pwr LAYER_PWR BACKSPACE
+				&gresc           &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4        &kp NUMBER_5         &mo LAYER_FN             &mo LAYER_FN      &kp NUMBER_6             &kp NUMBER_7   &kp NUMBER_8 &kp NUMBER_9   &kp NUMBER_0    &bspc_word LA(BACKSPACE) BACKSPACE
 				&kp TAB          &kp Q        &kp W        &kp E        &kp R               &kp T                &kp K_PLAY_PAUSE         &kp K_VOLUME_UP   &kp Y                    &kp U          &kp I        &kp O          &kp P           &kp BACKSLASH
 				&mt LCTRL ESCAPE &hm LCTRL A  &hm LALT S   &hm LGUI D   &hm LSHIFT F        &kp G                                                           &kp H                    &hm RSHIFT J   &hm RGUI K   &hm RALT L     &hm RCTRL SEMICOLON &kp SINGLE_QUOTE
 				&td_shift_caps   &kp Z        &kp X        &kp C        &kp V               &kp B                &kp K_NEXT               &kp K_VOLUME_DOWN &kp N                    &kp M          &kp COMMA    &kp PERIOD     &kp SLASH       &kp RIGHT_SHIFT
 				&kp LEFT_CONTROL &kp LEFT_ALT &kp LEFT_GUI &mkp LCLK    &mkp RCLK                                                                                                    &arrow_left LC(LEFT) LEFT_ARROW &kp UP_ARROW &kp DOWN_ARROW &arrow_right LC(RIGHT) RIGHT_ARROW &kp RETURN
 				                                                                            &kp DELETE           &kp K_PLAY_PAUSE         &kp K_NEXT        &kp DELETE
-				                                                        &lt LAYER_NAV SPACE &lt LAYER_PWR RETURN &kp HOME                 &kp END           &lt LAYER_SYMB BACKSPACE &kp SPACE
+				                                                        &lt LAYER_NAV SPACE &lt LAYER_PWR RETURN &kp HOME                 &kp END           &bspc_word LA(BACKSPACE) BACKSPACE &kp SPACE
 				                                                                                                 &lt LAYER_NMPAD QUESTION &kp PERIOD
 			>;
 		};
