@@ -25,14 +25,14 @@
 /* Mouse cursor settings - high speed, no acceleration ramp */
 &mmv {
     delay-ms = <0>;
-    time-to-max-speed-ms = <0>;
-    acceleration-exponent = <1>;
+    time-to-max-speed-ms = <200>;
+    acceleration-exponent = <2>;
 };
 
 /* Scroll wheel settings - instant max speed */
 &msc {
     delay-ms = <0>;
-    time-to-max-speed-ms = <0>;
+    time-to-max-speed-ms = <200>;
     acceleration-exponent = <1>;
 };
 
@@ -118,12 +118,6 @@
     };
 
     macros {
-        rgb_ug_status_macro: rgb_ug_status_macro_0 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&rgb_ug RGB_STATUS>;
-        };
-
         bt_0: bt_profile_macro_0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
