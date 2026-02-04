@@ -39,6 +39,13 @@
 
 / {
     behaviors {
+        /* Grave/Escape key - Grave when held with Shift/Cmd, Escape otherwise */
+        gresc: grave_escape {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp ESC>, <&kp GRAVE>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
+        };        
         /* Layer tap for power layer */
         lt_pwr: layer_tap_pwr {
             compatible = "zmk,behavior-hold-tap";
@@ -202,13 +209,6 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&sk LGUI>, <&sk LALT>, <&sk LCTRL>, <&sk LSHFT>;
-        };
-        /* Grave/Escape key - Grave when held with Shift/Cmd, Escape otherwise */
-        gresc: grave_escape {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp ESC>, <&kp GRAVE>;
-            mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
         };
         
         /* Auto-pair macros - type opening + closing, cursor moves to middle */
