@@ -92,3 +92,7 @@ The sliceMK ZMK fork differs from upstream ZMK:
 - **Do NOT use** `ZMK_POINTING_DEFAULT_MOVE_VAL` define (not supported)
 - **Do NOT use** `CONFIG_ZMK_MOUSE_DEFAULT_MOVE_VAL` Kconfig option (not supported)
 - **Do NOT include** `<dt-bindings/zmk/rgb.h>` unless RGB is configured
+
+## SliceMK Offical Resources
+
+- [Official sliceMK ZMK Documentation) (https://docs.slicemk.com/zmk/)
