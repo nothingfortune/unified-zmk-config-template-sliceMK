@@ -302,7 +302,7 @@
 			/* Row 3 */
 				&none			&sk LCTRL		&sk LSHIFT		&sk LALT	               &sk LGUI		    &sk LC(LS(LA(LEFT_GUI)))		    		&none		            &kp LEFT_ARROW	&kp DOWN_ARROW	    &kp RIGHT_ARROW	    	&kp PAGE_DOWN   &none           &none
 			/* Row 4 */
-				&none			&kp LC(X)		&kp LC(C)		&kp LC(V)		           &none			&none		                      &none	    &none		        	&none		    &kp HOME	    	&none		        	&kp END		    &none			&none			&none
+				&none			&kp LC(X)		&kp LC(C)		&kp LC(V)		           &none			&none		                      &none	    &none		        	&none		    &kp HOME	    	&none		        	&kp END		    &none			&none
 			/* Row 5 */
 				&none			&none			&none			&trans			&trans							                    			         &kp LS(LA(LEFT_ARROW))	&trans			&trans		    	&kp LS(LA(RIGHT_ARROW))	&none
 			/* Thumb Cluster */
@@ -319,13 +319,13 @@
 			/* Row 0 */
 				&none
 			/* Row 1 */
-				&none			&none			&msc SCRL_UP		&none	    		&mkp RCLK		&none			&none			&none			&none			&mkp RCLK		&none			&msc SCRL_UP		&none			&none           &none
+				&none			&none			&none		        &msc SCRL_UP 		&mkp RCLK		    &none			&none			&none			&none			&mkp RCLK		&none			&msc SCRL_UP		&none			&none           &none
 			/* Row 2 */
-				&none			&none			&msc SCRL_DOWN		&mmv MOVE_UP		&mkp LCLK		&none			&none			&none			&none			&mkp LCLK		&mmv MOVE_UP	&msc SCRL_DOWN		&none			&none           &none
+				&none			&none			&msc SCRL_DOWN		&mmv MOVE_UP		&mkp LCLK	        &none			&none			&none			&none			&mkp LCLK		&mmv MOVE_UP	&msc SCRL_DOWN		&none			&none           &none
 			/* Row 3 */
-				&none			&none			&mmv MOVE_LEFT		&mmv MOVE_DOWN		&mmv MOVE_RIGHT	&none									    	&none			&mmv MOVE_LEFT	&mmv MOVE_DOWN	&mmv MOVE_RIGHT	    &none			&none           &none
+				&none			&none			&mmv MOVE_LEFT		&mmv MOVE_DOWN		&mmv MOVE_RIGHT	    &none									    	&none			&mmv MOVE_LEFT	&mmv MOVE_DOWN	&mmv MOVE_RIGHT	    &none			&none           &none
 			/* Row 4 */
-				&none			&none			&none		    	&none	    		&none			&none			&none			&none			&none			&none			&none			&none			    &none			&none			&none
+				&none			&none			&msc SCRL_LEFT    	&none	    		&msc SCRL_RIGHT		&none			&none			&none			&none			&none			&none			&none			    &none			&none			&none
 			/* Row 5 */
 				&none			&none			&none			    &mkp LCLK		    &mkp RCLK									                	&trans			&trans			&trans			&trans			    &none
 			/* Thumb Cluster */
