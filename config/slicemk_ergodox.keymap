@@ -243,7 +243,7 @@
 			/* Row 0 */
 				&none
 			/* Row 1 */
-				&lock_screen                    &kp LC(Z)                       &kp LC(LS(Z))                   &kp LC(LS(NUMBER_4))            &none                           &none                           &none                           &none                           &none                           &none                           &none                           &none                           &none                           &kp LC(BACKSPACE)
+				&kp LC(LG(Q))                   &kp LC(Z)                       &kp LC(LS(Z))                   &kp LC(LS(NUMBER_4))            &none                           &none                           &none                           &none                           &none                           &none                           &none                           &none                           &none                           &kp LC(BACKSPACE)
 			/* Row 2 */
 				&none                           &kp LC(A)                       &kp LS(TAB)                     &kp TAB                         &none                           &none                           &none                           &none                           &none                           &kp LC(LEFT)                    &kp UP_ARROW                    &kp LC(RIGHT)                   &kp PAGE_UP                     &kp LC(DELETE)
 			/* Row 3 */

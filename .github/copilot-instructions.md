@@ -93,6 +93,22 @@ The sliceMK ZMK fork differs from upstream ZMK:
 - **Do NOT use** `CONFIG_ZMK_MOUSE_DEFAULT_MOVE_VAL` Kconfig option (not supported)
 - **Do NOT include** `<dt-bindings/zmk/rgb.h>` unless RGB is configured
 
+## Code Maintenance Guidelines
+
+### Before Removing Code
+**ALWAYS** search for all usages before removing behaviors, macros, or definitions:
+
+1. Use `grep_search` with the exact identifier name (not regex patterns that might miss matches)
+2. Check for both `&macro_name` usage in keymaps AND references in behavior definitions
+3. Verify no references exist in ALL layers before removal
+4. Example search pattern: `"query": "lock_screen"` (not `"&lock_screen"` which might miss some matches)
+
+### When Cleaning Up Unused Macros
+- Search for macro name without `&` prefix to catch all references
+- Check if used in layer bindings (e.g., `&lock_screen`)
+- Check if used in behavior definitions (e.g., `bindings = <&lock_screen>`)
+- Only remove after confirming zero matches
+
 ## SliceMK Offical Resources
 
 - [Official sliceMK ZMK Documentation) (https://docs.slicemk.com/zmk/)
